@@ -75,6 +75,40 @@ const prisma = new PrismaClient();
         },
     });
 
+
+    //missioncommander
+    const mc1 = await prisma.missionCommander.upsert({
+        where: { name: 'Carlo' },
+        update: {},
+        create: {
+            name: 'Carlo',
+                    username: 'carlogilmar',
+                    mainStack: 'nodejs',
+        },
+    });
+
+
+    const mc2 = await prisma.missionCommander.upsert({
+        where: { name: 'Rodrigo' },
+        update: {},
+        create: {
+            name: 'Rodrigo',
+                    username: 'Romarpla',
+                    mainStack: 'react',        
+        },
+    });
+
+
+    const mc3 = await prisma.missionCommander.upsert({
+        where: { name: 'Fernanda' },
+        update: {},
+        create: {
+            name: 'Fernanda',
+                    username: 'FernandaOchoa',
+                    mainStack: 'vue', 
+        },
+    });
+
     console.log('Create 3 explorers');
   } catch(e) {
     console.error(e);
