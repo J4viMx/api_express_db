@@ -140,7 +140,7 @@ app.post('/missionCommander', async (req, res) => {
   const explorer = {
     name: req.body.name,
     username: req.body.username,
-    mission: req.body.mission
+    mainStack: req.body.mainStack
    };
   const message = 'mission commander creado.';
   await prisma.missionCommander.create({data: explorer});
@@ -156,7 +156,7 @@ await prisma.missionCommander.update({
       id: id
   },
   data: {
-      mission: req.body.mission
+      mainStack: req.body.mainStack
   }
 })
 
