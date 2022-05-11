@@ -126,14 +126,14 @@ app.delete('/explorersNew/:id', async (req, res) => {
 
 
 app.get('/missionCommander', async (req, res) => {
-  const allExplorers =  await prisma.explorer_new.findMany({});
-  res.json(allExplorers);
+  const mc =  await prisma.missionCommander.findMany({});
+  res.json(mc);
 });
 
 app.get('/missionCommander/:id', async (req, res) => {
 const id = req.params.id;
-const explorer = await prisma.explorer_new.findUnique({where: {id: parseInt(id)}});
-res.json(explorer);
+const mc = await prisma.missionCommander.findUnique({where: {id: parseInt(id)}});
+res.json(mc);
 });
 
 app.post('/missionCommander', async (req, res) => {
@@ -143,7 +143,7 @@ app.post('/missionCommander', async (req, res) => {
     mission: req.body.mission
    };
   const message = 'mission commander creado.';
-  await prisma.explorer_new.create({data: explorer});
+  await prisma.missionCommander.create({data: explorer});
   return res.json({message});
 });
 
@@ -151,7 +151,7 @@ app.post('/missionCommander', async (req, res) => {
 app.put('/missionCommander/:id', async (req, res) => {
 const id = parseInt(req.params.id);
 
-await prisma.explorer_new.update({
+await prisma.missionCommander.update({
   where: {
       id: id
   },
@@ -166,6 +166,6 @@ return res.json({message: "Actualizado correctamente"});
 
 app.delete('/missionCommander/:id', async (req, res) => {
 const id = parseInt(req.params.id);
-await prisma.explorer_new.delete({where: {id: id}});
+await prisma.missionCommander.delete({where: {id: id}});
 return res.json({message: "Eliminado correctamente"});
 });
